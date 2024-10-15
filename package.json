@@ -1,39 +1,27 @@
 {
   "name": "sweet-modal-vue",
-  "version": "2.0.0",
+  "type": "module",
+  "files": ["dist"],
+  "version": "2.1.0",
   "description": "SweetModal library for use with Vue.js",
   "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.2",
-    "babel-minify-webpack-plugin": "^0.2.0",
-    "babel-preset-env": "^1.6.1",
-    "cross-env": "^1.0.6",
-    "css-loader": "^0.14.5",
-    "file-loader": "^0.8.4",
-    "imports-loader": "^0.6.5",
-    "node-sass": "^4.5.3",
-    "sass-loader": "^6.0.6",
-    "script-loader": "^0.7.0",
-    "style-loader": "^0.13.2",
-    "svg-inline-loader": "^0.7.1",
-    "unindent": "^2.0.0",
-    "vue": "^2.4.4",
+    "@vitejs/plugin-vue2": "^2.3.1",
+    "sass": "^1.79.5",
+    "vite": "^5.4.9",
+    "vue": "^2.7",
     "vue-highlightjs": "^1.1.0",
-    "vue-loader": "^13.0.5",
-    "vue-style-loader": "^1.0.0",
-    "vue-template-compiler": "^2.4.4",
-    "webpack": "^3.8.1",
-    "webpack-dev-server": "^2.9.3",
-    "webpack-merge": "^4.1.0"
+    "vue-template-compiler": "^2.4.4"
   },
   "peerDependencies": {
     "vue": "2.x"
   },
   "scripts": {
-    "dev": "webpack-dev-server --config docs/webpack.config.js --inline --hot",
-    "build": "npm run build-src && npm run build-docs",
-    "build-src": "webpack --config src/webpack.config.js --progress --hide-modules",
-    "build-docs": "webpack --config docs/webpack.config.js --progress --hide-modules"
+    "dev": "vite",
+    "build": "vite build",
+    "wk-dev": "webpack-dev-server --config docs/webpack.config.js --inline --hot",
+    "wk-build": "npm run build-src && npm run build-docs",
+    "wk-build-src": "webpack --config src/webpack.config.js --progress --hide-modules",
+    "wk-build-docs": "webpack --config docs/webpack.config.js --progress --hide-modules"
   },
   "repository": {
     "type": "git",
@@ -45,8 +33,14 @@
     "vue",
     "library"
   ],
-  "main": "dist/sweet-modal.js",
+  "main": "dist/sweet-modal.es.js",
   "module": "src/main.js",
+  "exports": {
+      ".": {
+          "import": "./dist/sweet-modal.es.js",
+          "require": "./dist/sweet-modal.umd.js"
+      }
+  },
   "author": "Adepto.as AS",
   "license": "ISC",
   "bugs": {

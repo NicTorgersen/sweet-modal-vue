@@ -309,9 +309,6 @@
 			 **********************/
 
 			_lockBody() {
-				this.backups.body.height = document.body.style.height
-				this.backups.body.overflow = document.body.style.overflow
-
 				document.body.style.height = '100%'
 				document.body.style.overflow = 'hidden'
 			},
@@ -427,6 +424,7 @@
 </script>
 
 <style lang="scss">
+    @use "sass:color";
 	@import '../styles/mixins';
 	@import '../styles/colors';
 	@import '../styles/animations';
@@ -751,8 +749,8 @@
 			}
 
 			.sweet-title {
-				border-bottom-color: darken($color, 8%);
-				box-shadow: 0px 1px 0px lighten($color, 8%);
+				border-bottom-color: color.adjust($color, $lightness: -8%);
+				box-shadow: 0px 1px 0px color.adjust($color, $lightness: 8%);
 			}
 
 			ul.sweet-modal-tabs li {
@@ -766,21 +764,21 @@
 				}
 
 				&.disabled a {
-					color: lighten($color, 20%);
+					color: color.adjust($color, $lightness: 20%);
 				}
 			}
 
 			&.has-tabs.has-title {
 
 				ul.sweet-modal-tabs {
-					border-bottom-color: darken($color, 8%);
-					box-shadow: 0px 1px 0px lighten($color, 8%);
+					border-bottom-color: color.adjust($color, $lightness: -8%);
+					box-shadow: 0px 1px 0px color.adjust($color, $lightness: 8%);
 				}
 			}
 
 			.sweet-content + .sweet-buttons {
-				border-top-color: lighten($color, 8%);
-				box-shadow: 0px -1px 0px darken($color, 8%);
+				border-top-color: color.adjust($color, $lightness: 8%);
+				box-shadow: 0px -1px 0px color.adjust($color, $lightness: -8%);
 			}
 		}
 
